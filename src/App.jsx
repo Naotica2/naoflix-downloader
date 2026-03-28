@@ -101,7 +101,7 @@ const FAQ_ITEMS = [
       'Yes, NaoFlix is completely safe. Our APK has been verified and scanned for malware. You can check the full security report on VirusTotal.',
     hasLink: true,
     linkText: 'View VirusTotal Report',
-    linkHref: 'https://www.virustotal.com',
+    linkHref: 'https://www.virustotal.com/gui/file/69ff3cd124c78cd2977774202a6ed1afa91be31b382c875671d2e3cf19d1dbf2?nocache=1',
   },
   {
     question: 'Is NaoFlix completely free?',
