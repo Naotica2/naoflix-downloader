@@ -165,7 +165,7 @@ function Navbar() {
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle/50 bg-surface/80 backdrop-blur-xl"
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
         {/* Logo */}
         <a href="/" className="group flex items-center gap-2.5" id="nav-logo">
           <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-white/[0.06] ring-1 ring-white/[0.08] transition-all duration-200 group-hover:bg-white/[0.1] group-hover:ring-white/[0.14]">
@@ -199,12 +199,12 @@ function Navbar() {
 function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6"
       id="hero"
     >
       {/* Subtle radial glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.015] blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-1/2 h-[400px] w-[90vw] max-w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.015] blur-[120px] sm:h-[600px]" />
       </div>
 
       <motion.div
@@ -281,13 +281,13 @@ function Hero() {
 
 function WhyNaoFlix() {
   return (
-    <section className="relative py-24 sm:py-32" id="features">
+    <section className="relative overflow-hidden py-24 sm:py-32" id="features">
       {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-white/[0.008] blur-[100px]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-[300px] w-[90vw] max-w-[800px] -translate-x-1/2 rounded-full bg-white/[0.008] blur-[100px] sm:h-[400px]" />
       </div>
 
-      <div className="relative mx-auto max-w-5xl px-6">
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           className="mb-16 text-center"
@@ -433,8 +433,8 @@ function FAQ() {
   }
 
   return (
-    <section className="relative py-24 sm:py-32" id="faq">
-      <div className="relative mx-auto max-w-2xl px-6">
+    <section className="relative overflow-hidden py-24 sm:py-32" id="faq">
+      <div className="relative mx-auto max-w-2xl px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           className="mb-12 text-center"
@@ -498,7 +498,7 @@ function Footer() {
   return (
     <footer className="border-t border-border-subtle/50">
       {/* Main footer area */}
-      <div className="mx-auto max-w-5xl px-6 py-16">
+      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-5">
@@ -570,7 +570,7 @@ function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-border-subtle/40">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
           <p className="text-[12px] text-text-muted">
             &copy; {new Date().getFullYear()} NaoFlix. All rights reserved.
           </p>
