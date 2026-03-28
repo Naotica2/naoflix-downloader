@@ -1,5 +1,8 @@
 import { useState } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
+import Releases from './pages/Releases'
 import {
   Play,
   Download,
@@ -178,8 +181,8 @@ function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden items-center gap-6 sm:flex">
-          <a href="#features" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">Features</a>
-          <a href="#faq" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">FAQ</a>
+          <a href="/#features" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">Features</a>
+          <a href="/#faq" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">FAQ</a>
           <a
             href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/anime-release.apk"
             download="naoflix.apk"
@@ -247,30 +250,42 @@ function Hero() {
         <motion.div
           variants={fadeUp}
           custom={3}
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           {/* Primary – Download APK */}
-          <a
-            href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/anime-release.apk"
-            download="naoflix.apk"
-            id="cta-download"
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-text-primary px-6 py-3 text-[14px] font-semibold text-surface shadow-lg shadow-white/[0.04] transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-white/[0.08] active:scale-[0.98] sm:w-auto"
-          >
-            <Download className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
-            Download APK
-          </a>
+          <div className="flex w-full flex-col items-center sm:w-auto">
+            <a
+              href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflix-v1.2.1.apk"
+              download="naoflix.apk"
+              id="cta-download"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-text-primary px-6 py-3 text-[14px] font-semibold text-surface shadow-lg shadow-white/[0.04] transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-white/[0.08] active:scale-[0.98] sm:w-auto"
+            >
+              <Download className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
+              Download APK
+            </a>
+            <span className="mt-2 text-[12px] font-medium text-text-muted">Gets the latest version</span>
+          </div>
 
-          {/* Secondary – GitHub */}
-          <a
-            href="https://github.com/Naotica2"
-            target="_blank"
-            rel="noopener noreferrer"
-            id="cta-github"
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-border-subtle bg-white/[0.03] px-6 py-3 text-[14px] font-medium text-text-secondary backdrop-blur-sm transition-all duration-200 ease-in-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-text-primary active:scale-[0.98] sm:w-auto"
-          >
-            <Github className="h-4 w-4" />
-            GitHub
-          </a>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:-mt-6">
+            <Link
+              to="/releases"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-border-subtle bg-white/[0.03] px-6 py-3 text-[14px] font-medium text-text-secondary backdrop-blur-sm transition-all duration-200 ease-in-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-text-primary active:scale-[0.98] sm:w-auto"
+            >
+              View Previous Releases
+            </Link>
+
+            {/* Secondary – GitHub */}
+            <a
+              href="https://github.com/Naotica2"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="cta-github"
+              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-border-subtle bg-white/[0.03] px-6 py-3 text-[14px] font-medium text-text-secondary backdrop-blur-sm transition-all duration-200 ease-in-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-text-primary active:scale-[0.98] sm:w-auto"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+            </a>
+          </div>
         </motion.div>
       </motion.div>
     </section>
@@ -591,9 +606,9 @@ function Footer() {
   )
 }
 
-/* ──────────────────────── App ──────────────────────── */
+/* ──────────────────────── Home ──────────────────────── */
 
-export default function App() {
+function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-surface">
       <Navbar />
@@ -604,5 +619,16 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+/* ──────────────────────── App ──────────────────────── */
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/releases" element={<Releases />} />
+    </Routes>
   )
 }
