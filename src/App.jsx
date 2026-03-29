@@ -117,11 +117,6 @@ const FAQ_ITEMS = [
       'NaoFlix is currently available for Android devices running Android 7.0 (Nougat) and above. We are working on expanding to more platforms in the future.',
   },
   {
-    question: 'Do I need to create an account?',
-    answer:
-      'No account or registration is required. Simply download the APK, install it, and start watching immediately. Your privacy is our priority.',
-  },
-  {
     question: 'How do I update the app?',
     answer:
       'When a new version is available, simply download the latest APK from this page and install it over the existing version. Your data will be preserved.',
