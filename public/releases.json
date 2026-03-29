@@ -10,7 +10,7 @@
   {
     "version": "1.2.1",
     "date": "2026-03-28",
-    "downloadUrl": "https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.1.apk",
+    "downloadUrl": "",
     "changelog": [
       "Google Authentication",
       "Username register",

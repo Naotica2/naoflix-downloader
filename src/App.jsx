@@ -179,7 +179,7 @@ function Navbar() {
           <a href="/#features" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">Features</a>
           <a href="/#faq" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">FAQ</a>
           <a
-            href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/anime-release.apk"
+            href=""
             download="naoflix.apk"
             className="inline-flex items-center gap-1.5 rounded-lg bg-white/[0.06] px-4 py-2 text-[13px] font-medium text-text-primary ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.1] hover:ring-white/[0.14]"
           >
