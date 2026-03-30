@@ -250,7 +250,7 @@ function Hero() {
           {/* Primary – Download APK */}
           <div className="flex w-full flex-col items-center sm:w-auto">
             <a
-              href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.1.apk"
+              href="https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.2.apk"
               download="naoflix.apk"
               id="cta-download"
               className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-text-primary px-6 py-3 text-[14px] font-semibold text-surface shadow-lg shadow-white/[0.04] transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-white/[0.08] active:scale-[0.98] sm:w-auto"
