@@ -29,5 +29,15 @@
       "Stability Enhancement",
       "Support developer ( donasi button )"
     ]
+  },
+      {
+    "version": "1.2.3",
+    "date": "2026-04-01",
+    "downloadUrl": "https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.3.apk",
+    "changelog": [
+      "Switching to the new anime series server (beta) it might be a little unstable",
+      "Fix the keyboard that covers the comment section while typing",
+      "Fixing comic data that isn't loading on the home page"
+    ]
   }
 ]
