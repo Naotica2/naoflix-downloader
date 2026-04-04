@@ -39,5 +39,19 @@
       "Fix the keyboard that covers the comment section while typing",
       "Fixing comic data that isn't loading on the home page"
     ]
+  },
+        {
+    "version": "1.2.4",
+    "date": "2026-04-04",
+    "downloadUrl": "https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.4.apk",
+    "changelog": [
+      "All three categories now have their own pages",
+      "Change the navigation bar to 5 ( anime, film, comic, saya and utilitas )",
+      "New Comic server ( faster than before )",
+      "360p Default Player Resolution",
+      "Smart Search Reset",
+      "Comic Thumbnail Fix",
+      "Tab Data Persistence"
+    ]
   }
 ]
