@@ -53,5 +53,18 @@
       "Comic Thumbnail Fix",
       "Tab Data Persistence"
     ]
+  },
+        {
+    "version": "1.2.5",
+    "date": "2026-04-08",
+    "downloadUrl": "https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.5.apk",
+    "changelog": [
+      "Independent System Core",
+      "Smarter Search & Thumbnail",
+      "Anti-Block Video Player",
+      "Immersive Comic Reader",
+      "Clean UI & Comic Fixes",
+      "And More ( males ngetik )"
+    ]
   }
 ]
