@@ -66,5 +66,17 @@
       "Clean UI & Comic Fixes",
       "And More ( males ngetik )"
     ]
+  },
+        {
+    "version": "1.2.6",
+    "date": "2026-04-09",
+    "downloadUrl": "https://pbqxnmfvclduirsvckxz.supabase.co/storage/v1/object/public/naoflix/naoflixv1.2.6.apk",
+    "changelog": [
+      "Anime Server Migration",
+      "Native Video Player",
+      "Multi-Resolution",
+      "Server Switching",
+      "Legacy URL Support"
+    ]
   }
 ]
