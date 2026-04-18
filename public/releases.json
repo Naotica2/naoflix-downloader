@@ -78,5 +78,17 @@
       "Server Switching",
       "Legacy URL Support"
     ]
+  },
+        {
+    "version": "1.2.7",
+    "date": "2026-04-18",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v1.2.7.apk",
+    "changelog": [
+      "Gamification System",
+      "Leveling Info",
+      "Monochrome UI",
+      "Anime movie optimizatio",
+      "Clean interface"
+    ]
   }
 ]
