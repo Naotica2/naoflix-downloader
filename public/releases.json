@@ -90,5 +90,15 @@
       "Anime movie optimizatio",
       "Clean interface"
     ]
+  },
+          {
+    "version": "1.2.8",
+    "date": "2026-04-20",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v1.2.8.apk",
+    "changelog": [
+      "Novel page",
+      "Fix bug in searching",
+      "And more ( don't ask what )"
+    ]
   }
 ]
