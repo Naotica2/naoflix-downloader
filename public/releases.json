@@ -108,5 +108,13 @@
     "changelog": [
       "Fix Prev/Next button comic"
     ]
+  },
+              {
+    "version": "1.3.0",
+    "date": "2026-04-21",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v1.3.0.apk",
+    "changelog": [
+      "Fix Comic"
+    ]
   }
 ]
