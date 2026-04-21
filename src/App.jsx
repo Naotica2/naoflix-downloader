@@ -241,16 +241,16 @@ function Hero() {
           Your all-in-one entertainment app. NaoFlix is the ultimate platform to stream films, watch anime, and read your favorite comics.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {}
         <motion.div
           variants={fadeUp}
           custom={3}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          {/* Primary – Download APK */}
+          {}
           <div className="flex w-full flex-col items-center sm:w-auto">
             <a
-              href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v1.2.8.apk"
+              href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v1.2.9.apk"
               download="naoflix.apk"
               id="cta-download"
               className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-text-primary px-6 py-3 text-[14px] font-semibold text-surface shadow-lg shadow-white/[0.04] transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-white/[0.08] active:scale-[0.98] sm:w-auto"
