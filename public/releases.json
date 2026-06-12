@@ -126,5 +126,33 @@
       "Fix History Crash",
       "and more"
     ]
+  },
+                  {
+    "version": "2.0.0",
+    "date": "2026-06-12",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk",
+    "changelog": [
+      "Added Crunchyroll-Style UI/UX: Perombakan total tampilan dan navigasi.",
+      "Added Hero Carousel: Banner anime unggulan di halaman utama dengan auto-scroll.",
+      "Added Continue Watching: Baris khusus di Home yang menampilkan anime yang sedang ditonton.",
+      "Added Browse Page: Eksplorasi konten dengan chip filter dan pencarian.",
+      "Added My Lists Page: Menggabungkan Riwayat dan Tonton Nanti.",
+      "Added Account Page: Profil header dengan avatar, level, rank badge, dan EXP bar.",
+      "Added New Anime Source (Animelovers): API streaming anime terbaru pengganti Kuramanime.",
+      "Added New Comic Source (MyNimeku & Bacakomik): Alternatif baca Manga, Manhwa, dan Manhua.",
+      "Added Read Chapter Indicator & Continue Button untuk novel.",
+      "Changed Blue Accent Color: Tema berubah dari oranye (#F47521) menjadi biru (#3b82f6).",
+      "Changed Episode Navigation: Tombol Mulai dan Tonton Episode Terbaru diperbaiki.",
+      "Changed Comic Thumbnail: Rasio kini 1:1.5 konsisten dengan anime.",
+      "Changed Novel Chapter List: Scroll lancar untuk novel dengan 1000+ chapter.",
+      "Removed Samehadaku, Kuramanime & Kuronime: Dihapus karena error/diblokir.",
+      "Removed Film Section: Dihapus sementara untuk perbaikan.",
+      "Fixed Novel Loading Freeze pada novel dengan 700+ chapter.",
+      "Fixed Episode Navigation Stuck saat pindah episode.",
+      "Fixed MyNimeku Search & Genre browsing.",
+      "Fixed 404 Not Found dari Home menuju halaman detail/streaming.",
+      "Fixed Pagination Optimization mencegah infinity bug di menu Terbaru.",
+      "Fixed Account Page Safe Area profil agar tidak mentok ke status bar."
+    ]
   }
 ]
