@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion'
 import Releases from './pages/Releases'
+import Donation from './pages/Donation'
 import {
-  Play,
   Download,
   ShieldOff,
   Monitor,
@@ -13,10 +12,11 @@ import {
   ChevronDown,
   ExternalLink,
   ArrowUpRight,
+  X,
+  Menu,
 } from 'lucide-react'
 
-// Lucide brand icons were removed from the main package in recent versions.
-// We inline the standard Lucide SVG paths for Instagram and Github to maintain the exact look.
+
 function Instagram({ className }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -36,7 +36,6 @@ function Github({ className }) {
   )
 }
 
-/* ──────────────────────── Animation Variants ──────────────────────── */
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -59,82 +58,77 @@ const stagger = {
   },
 }
 
-const cardHover = {
-  rest: { scale: 1, y: 0 },
-  hover: {
-    scale: 1.02,
-    y: -4,
-    transition: { duration: 0.25, ease: 'easeOut' },
-  },
-}
-
-/* ──────────────────────── Data ──────────────────────── */
 
 const FEATURES = [
   {
     icon: ShieldOff,
-    title: 'No Ads',
+    title: 'Tanpa Iklan',
     description:
-      'Enjoy uninterrupted viewing with absolutely zero advertisements. No pop-ups, no banners — just pure content.',
+      'Nikmati pengalaman menonton tanpa gangguan. Tidak ada pop-up, tidak ada banner — hanya konten murni.',
   },
   {
     icon: Monitor,
-    title: 'HD Resolution',
+    title: 'Resolusi HD',
     description:
-      'Crystal-clear streaming quality up to 1080p. Every scene rendered in stunning detail on any screen size.',
+      'Kualitas streaming jernih hingga 1080p. Setiap adegan ditampilkan dengan detail memukau di layar apapun.',
   },
   {
     icon: Library,
-    title: 'Complete Library',
+    title: 'Perpustakaan Lengkap',
     description:
-      'Access thousands of movies, anime series, and comics all in one place. New titles added regularly.',
+      'Akses ribuan film, serial anime, dan komik di satu tempat. Judul baru ditambahkan secara berkala.',
   },
   {
     icon: Subtitles,
-    title: 'Indonesian Subtitles',
+    title: 'Subtitle Indonesia',
     description:
-      'Built-in Indonesian subtitles available for all content. Watch comfortably in your preferred language.',
+      'Subtitle bahasa Indonesia tersedia untuk semua konten. Tonton dengan nyaman dalam bahasa Anda.',
   },
 ]
 
 const FAQ_ITEMS = [
   {
-    question: 'Is this application safe to use?',
+    question: 'Apakah aplikasi ini aman digunakan?',
     answer:
-      'Yes, NaoFlix is completely safe. Our APK has been verified and scanned for malware. You can check the full security report on VirusTotal.',
+      'Ya, NaoFlix sepenuhnya aman. APK kami telah diverifikasi dan dipindai dari malware. Anda dapat memeriksa laporan keamanan lengkap di VirusTotal.',
     hasLink: true,
-    linkText: 'View VirusTotal Report',
+    linkText: 'Lihat Laporan VirusTotal',
     linkHref: 'https://www.virustotal.com/gui/file/69ff3cd124c78cd2977774202a6ed1afa91be31b382c875671d2e3cf19d1dbf2?nocache=1',
   },
   {
-    question: 'Is NaoFlix completely free?',
+    question: 'Apakah NaoFlix benar-benar tanpa iklan?',
     answer:
-      'Absolutely. NaoFlix is 100% free to download and use. There are no hidden fees, no premium tiers, and no in-app purchases. All content is available to every user.',
+      'Ya, NaoFlix 100% tanpa iklan. Kami tidak menampilkan iklan pop-up, banner, atau video di dalam aplikasi. Anda dapat menikmati semua konten tanpa gangguan apapun.',
   },
   {
-    question: 'What devices are supported?',
+    question: 'Apakah NaoFlix gratis?',
     answer:
-      'NaoFlix is currently available for Android devices running Android 7.0 (Nougat) and above. We are working on expanding to more platforms in the future.',
+      'Tentu saja. NaoFlix 100% gratis untuk diunduh dan digunakan. Tidak ada biaya tersembunyi, tidak ada tier premium, dan tidak ada pembelian dalam aplikasi. Semua konten tersedia untuk setiap pengguna.',
   },
   {
-    question: 'How do I update the app?',
+    question: 'Perangkat apa saja yang didukung?',
     answer:
-      'When a new version is available, simply download the latest APK from this page and install it over the existing version. Your data will be preserved.',
+      'NaoFlix saat ini tersedia untuk perangkat Android yang menjalankan Android 7.0 (Nougat) ke atas. Kami sedang berupaya memperluas ke platform lain di masa depan.',
   },
   {
-    question: 'Where does the content come from?',
+    question: 'Bagaimana cara memperbarui aplikasi?',
     answer:
-      'NaoFlix aggregates content from various publicly available sources across the internet. We do not host any content on our own servers.',
+      'Ada dua cara untuk memperbarui NaoFlix. Pertama, Anda bisa langsung memperbarui dari dalam aplikasi NaoFlix itu sendiri jika sudah pernah menginstal sebelumnya. Kedua, unduh APK terbaru dari halaman ini dan instal di atas versi yang ada. Data Anda akan tetap tersimpan.',
+  },
+  {
+    question: 'Dari mana konten berasal?',
+    answer:
+      'NaoFlix mengumpulkan konten dari berbagai sumber yang tersedia secara publik di internet. Kami tidak menyimpan konten apapun di server kami sendiri.',
   },
 ]
 
 const FOOTER_LINKS = {
-  Product: [
-    { label: 'Download', href: '#hero' },
-    { label: 'Features', href: '#features' },
+  Produk: [
+    { label: 'Unduh', href: '#hero' },
+    { label: 'Fitur', href: '#fitur' },
     { label: 'FAQ', href: '#faq' },
   ],
-  Company: [
+  Perusahaan: [
     {
       label: 'GitHub',
       href: 'https://github.com/Naotica2',
@@ -147,158 +141,191 @@ const FOOTER_LINKS = {
     },
   ],
   Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Kebijakan Privasi', href: '#' },
+    { label: 'Syarat Layanan', href: '#' },
     { label: 'Disclaimer', href: '#' },
   ],
 }
 
-/* ──────────────────────── Navbar ──────────────────────── */
+function AnnouncementBar() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) return null
+
+  return (
+    <div className="relative z-[60] flex h-9 w-full items-center justify-center bg-cohere-black px-10">
+      <p className="text-[12px] leading-tight text-white">
+        NaoFlix v2.0.0 sudah tersedia!{' '}
+        <a href="#hero" className="underline underline-offset-2 transition-opacity hover:opacity-80">
+          Unduh sekarang
+        </a>
+      </p>
+      <button
+        onClick={() => setVisible(false)}
+        className="absolute right-3 flex h-5 w-5 items-center justify-center rounded text-white/60 transition-colors hover:text-white"
+        aria-label="Tutup pengumuman"
+      >
+        <X className="h-3 w-3" />
+      </button>
+    </div>
+  )
+}
 
 function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle/50 bg-surface/80 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-xl"
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
-        {/* Logo */}
-        <a href="/" className="group flex items-center gap-2.5" id="nav-logo">
-          <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-white/[0.06] ring-1 ring-white/[0.08] transition-all duration-200 group-hover:bg-white/[0.1] group-hover:ring-white/[0.14]">
+        <Link to="/" className="group flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg">
             <img src="/logo.png" alt="NaoFlix Logo" className="h-full w-full object-cover" />
           </div>
-          <span className="text-[15px] font-semibold tracking-tight text-text-primary">
+          <span className="font-display text-[15px] font-semibold tracking-tight text-ink">
             NaoFlix
           </span>
-        </a>
+        </Link>
 
-        {/* Nav Links */}
         <div className="hidden items-center gap-6 sm:flex">
-          <a href="/#features" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">Features</a>
-          <a href="/#faq" className="text-[13px] font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary">FAQ</a>
+          <a href="/#fitur" className="text-[14px] font-medium text-body-muted transition-colors duration-200 hover:text-ink">
+            Fitur
+          </a>
+          <a href="/#faq" className="text-[14px] font-medium text-body-muted transition-colors duration-200 hover:text-ink">
+            FAQ
+          </a>
+          <Link to="/donasi" className="text-[14px] font-medium text-body-muted transition-colors duration-200 hover:text-ink">
+            Donasi
+          </Link>
+          <Link to="/releases" className="text-[14px] font-medium text-body-muted transition-colors duration-200 hover:text-ink">
+            Riwayat
+          </Link>
           <a
-            href=""
+            href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
             download="naoflix.apk"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-white/[0.06] px-4 py-2 text-[13px] font-medium text-text-primary ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.1] hover:ring-white/[0.14]"
+            className="inline-flex items-center gap-1.5 rounded-[32px] bg-primary px-5 py-2.5 text-[14px] font-medium text-white transition-all duration-200 hover:bg-cohere-black active:scale-[0.98]"
           >
             <Download className="h-3.5 w-3.5" />
-            Download
+            Unduh
           </a>
         </div>
+
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-ink transition-colors hover:bg-soft-stone sm:hidden"
+          aria-label="Menu"
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden border-t border-hairline bg-canvas sm:hidden"
+          >
+            <div className="flex flex-col gap-1 px-4 py-4">
+              <a href="/#fitur" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">Fitur</a>
+              <a href="/#faq" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">FAQ</a>
+              <Link to="/donasi" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">Donasi</Link>
+              <Link to="/releases" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">Riwayat</Link>
+              <a
+                href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
+                download="naoflix.apk"
+                onClick={() => setMobileOpen(false)}
+                className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-[32px] bg-primary px-5 py-3 text-[14px] font-medium text-white"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Unduh APK
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
 
-/* ──────────────────────── Hero Section ──────────────────────── */
-
 function Hero() {
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6"
+      className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-4 py-20"
       id="hero"
     >
-      {/* Subtle radial glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[90vw] max-w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.015] blur-[120px] sm:h-[600px]" />
-      </div>
-
       <motion.div
-        className="relative z-10 mx-auto max-w-2xl text-center"
+        className="relative z-10 mx-auto max-w-3xl text-center"
         variants={stagger}
         initial="hidden"
         animate="visible"
       >
-        {/* Badge */}
         <motion.div variants={fadeUp} custom={0} className="mb-8 inline-flex">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-elevated/60 px-4 py-1.5 text-[13px] font-medium text-text-secondary backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-4 py-1.5 text-[13px] font-medium text-body-muted">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-deep-green/60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-deep-green" />
             </span>
-            Available Now
+            Tersedia Sekarang
           </span>
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           variants={fadeUp}
           custom={1}
-          className="text-[clamp(2.25rem,4.5vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-text-primary"
+          className="font-display text-[clamp(2rem,6vw,5rem)] font-normal leading-[1.05] tracking-[-1.92px] text-ink"
         >
-          Watch Movies, Anime <br className="hidden sm:block" />
-          <span className="text-text-secondary">& Read Comics.</span>
+          Streaming & Baca Komik Gratis{' '}
+          <span className="text-body-muted">100% Tanpa Iklan</span>
         </motion.h1>
 
-        {/* Sub-headline */}
         <motion.p
           variants={fadeUp}
           custom={2}
-          className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-text-secondary sm:text-base"
+          className="mx-auto mt-6 max-w-lg text-[clamp(1rem,2vw,1.125rem)] leading-[1.4] text-body-muted"
         >
-          Your all-in-one entertainment app. NaoFlix is the ultimate platform to stream films, watch anime, and read your favorite comics.
+          Platform hiburan all-in-one Anda. NaoFlix adalah aplikasi terbaik untuk streaming film, menonton anime, dan membaca komik favorit — gratis tanpa iklan.
         </motion.p>
 
-        {}
         <motion.div
           variants={fadeUp}
           custom={3}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          {}
-          <div className="flex w-full flex-col items-center sm:w-auto">
+          <div className="flex flex-col items-center">
             <a
               href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
               download="naoflix.apk"
-              id="cta-download"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-text-primary px-6 py-3 text-[14px] font-semibold text-surface shadow-lg shadow-white/[0.04] transition-all duration-200 ease-in-out hover:bg-accent hover:shadow-white/[0.08] active:scale-[0.98] sm:w-auto"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-[32px] bg-primary px-6 py-3 text-[14px] font-medium text-white transition-all duration-200 hover:bg-cohere-black active:scale-[0.98]"
             >
               <Download className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
-              Download APK
+              Unduh APK
             </a>
-            <span className="mt-2 text-[12px] font-medium text-text-muted">Gets the latest version</span>
+            <span className="mt-2 text-[12px] font-medium text-muted">Mendapatkan versi terbaru</span>
           </div>
 
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:-mt-6">
-            <Link
-              to="/releases"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-border-subtle bg-white/[0.03] px-6 py-3 text-[14px] font-medium text-text-secondary backdrop-blur-sm transition-all duration-200 ease-in-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-text-primary active:scale-[0.98] sm:w-auto"
-            >
-              View Previous Releases
-            </Link>
-
-            {/* Secondary – GitHub */}
-            <a
-              href="https://github.com/Naotica2"
-              target="_blank"
-              rel="noopener noreferrer"
-              id="cta-github"
-              className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl border border-border-subtle bg-white/[0.03] px-6 py-3 text-[14px] font-medium text-text-secondary backdrop-blur-sm transition-all duration-200 ease-in-out hover:border-white/[0.12] hover:bg-white/[0.06] hover:text-text-primary active:scale-[0.98] sm:w-auto"
-            >
-              <Github className="h-4 w-4" />
-              GitHub
-            </a>
-          </div>
+          <Link
+            to="/releases"
+            className="inline-flex items-center justify-center gap-2 rounded-[30px] border border-hairline px-6 py-3 text-[14px] font-medium text-primary transition-all duration-200 hover:border-ink/30 hover:bg-soft-stone active:scale-[0.98]"
+          >
+            Lihat Riwayat Versi
+          </Link>
         </motion.div>
       </motion.div>
     </section>
   )
 }
 
-/* ──────────────────────── Why NaoFlix Section ──────────────────────── */
-
-function WhyNaoFlix() {
+function Features() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32" id="features">
-      {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[300px] w-[90vw] max-w-[800px] -translate-x-1/2 rounded-full bg-white/[0.008] blur-[100px] sm:h-[400px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
-        {/* Section header */}
+    <section className="relative overflow-hidden py-20" id="fitur">
+      <div className="relative mx-auto max-w-5xl px-4">
         <motion.div
           className="mb-16 text-center"
           initial="hidden"
@@ -309,29 +336,26 @@ function WhyNaoFlix() {
           <motion.span
             variants={fadeUp}
             custom={0}
-            className="mb-4 inline-block rounded-full border border-border-subtle bg-surface-elevated/60 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-widest text-text-secondary"
+            className="font-mono mb-4 inline-block text-[14px] font-normal uppercase tracking-[0.28px] text-muted"
           >
-            Why NaoFlix
+            Fitur Unggulan
           </motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-4 text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-tight tracking-tight text-text-primary"
+            className="font-display mt-2 text-[clamp(1.75rem,4vw,3rem)] font-normal leading-[1.2] tracking-[-0.48px] text-ink"
           >
-            Built for the Best <br className="hidden sm:block" />
-            Viewing Experience
+            Dibangun untuk Pengalaman Menonton Terbaik
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-lg text-[15px] leading-relaxed text-text-secondary"
+            className="mx-auto mt-4 max-w-lg text-[16px] leading-[1.5] text-body-muted"
           >
-            Everything you need for seamless entertainment, with none of the
-            hassle. Here is what sets NaoFlix apart.
+            Semua yang Anda butuhkan untuk hiburan tanpa gangguan. Inilah yang membedakan NaoFlix.
           </motion.p>
         </motion.div>
 
-        {/* Feature cards grid */}
         <motion.div
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
           initial="hidden"
@@ -346,27 +370,19 @@ function WhyNaoFlix() {
                 key={feature.title}
                 variants={fadeUp}
                 custom={index}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
               >
-                <motion.div
-                  variants={cardHover}
-                  className="group relative flex h-full flex-col rounded-2xl border border-border-subtle/70 bg-white/[0.02] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-white/[0.08] hover:bg-white/[0.04]"
-                >
-                  {/* Icon */}
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-white/[0.06] transition-all duration-300 group-hover:bg-white/[0.08] group-hover:ring-white/[0.1]">
-                    <Icon className="h-5 w-5 text-text-secondary transition-colors duration-300 group-hover:text-text-primary" />
+                <div className="group flex h-full flex-col rounded-[4px] border border-hairline/70 bg-canvas p-6 transition-colors duration-300 hover:border-hairline">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[8px] border border-hairline bg-canvas transition-all duration-300">
+                    <Icon className="h-5 w-5 text-body-muted transition-colors duration-300 group-hover:text-ink" />
                   </div>
 
-                  {/* Text */}
-                  <h3 className="mb-2 text-[15px] font-semibold text-text-primary">
+                  <h3 className="mb-2 text-[24px] font-normal leading-[1.3] text-ink">
                     {feature.title}
                   </h3>
-                  <p className="text-[13px] leading-relaxed text-text-muted transition-colors duration-300 group-hover:text-text-secondary">
+                  <p className="text-[16px] leading-[1.5] text-body-muted transition-colors duration-300 group-hover:text-ink">
                     {feature.description}
                   </p>
-                </motion.div>
+                </div>
               </motion.div>
             )
           })}
@@ -376,30 +392,27 @@ function WhyNaoFlix() {
   )
 }
 
-/* ──────────────────────── FAQ Section ──────────────────────── */
-
 function FAQItem({ item, isOpen, onToggle, index }) {
   return (
     <motion.div
       variants={fadeUp}
       custom={index}
-      className="border-b border-border-subtle/50 last:border-b-0"
+      className="border-b border-hairline last:border-b-0"
     >
       <button
         onClick={onToggle}
-        id={`faq-item-${index}`}
-        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors duration-200 hover:text-text-primary"
+        className="flex w-full items-center justify-between gap-4 py-6 text-left transition-colors duration-200"
         aria-expanded={isOpen}
       >
-        <span className={`text-[15px] font-medium transition-colors duration-200 ${isOpen ? 'text-text-primary' : 'text-text-secondary'}`}>
+        <span className={`text-[24px] font-normal leading-[1.3] transition-colors duration-200 ${isOpen ? 'text-ink' : 'text-body-muted'}`}>
           {item.question}
         </span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.25, ease: 'easeInOut' }}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.04] ring-1 ring-white/[0.06]"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[4px] border border-hairline"
         >
-          <ChevronDown className={`h-4 w-4 transition-colors duration-200 ${isOpen ? 'text-text-primary' : 'text-text-muted'}`} />
+          <ChevronDown className={`h-4 w-4 transition-colors duration-200 ${isOpen ? 'text-ink' : 'text-muted'}`} />
         </motion.span>
       </button>
 
@@ -412,8 +425,8 @@ function FAQItem({ item, isOpen, onToggle, index }) {
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden"
           >
-            <div className="pb-5 pr-12">
-              <p className="text-[14px] leading-relaxed text-text-muted">
+            <div className="pb-6 pr-12">
+              <p className="text-[16px] leading-[1.5] text-body-muted">
                 {item.answer}
               </p>
               {item.hasLink && (
@@ -421,7 +434,7 @@ function FAQItem({ item, isOpen, onToggle, index }) {
                   href={item.linkHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-text-secondary underline decoration-border-subtle underline-offset-4 transition-colors duration-200 hover:text-text-primary hover:decoration-text-muted"
+                  className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-action-blue underline decoration-action-blue/30 underline-offset-4 transition-colors duration-200 hover:text-action-blue hover:decoration-action-blue"
                 >
                   {item.linkText}
                   <ExternalLink className="h-3 w-3" />
@@ -443,9 +456,8 @@ function FAQ() {
   }
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-32" id="faq">
-      <div className="relative mx-auto max-w-2xl px-4 sm:px-6">
-        {/* Section header */}
+    <section className="relative overflow-hidden py-20" id="faq">
+      <div className="relative mx-auto max-w-2xl px-4">
         <motion.div
           className="mb-12 text-center"
           initial="hidden"
@@ -456,83 +468,72 @@ function FAQ() {
           <motion.span
             variants={fadeUp}
             custom={0}
-            className="mb-4 inline-block rounded-full border border-border-subtle bg-surface-elevated/60 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-widest text-text-secondary"
+            className="font-mono mb-4 inline-block text-[14px] font-normal uppercase tracking-[0.28px] text-muted"
           >
             FAQ
           </motion.span>
           <motion.h2
             variants={fadeUp}
             custom={1}
-            className="mt-4 text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-tight tracking-tight text-text-primary"
+            className="font-display mt-2 text-[clamp(1.75rem,4vw,3rem)] font-normal leading-[1.2] tracking-[-0.48px] text-ink"
           >
-            Frequently Asked Questions
+            Pertanyaan yang Sering Diajukan
           </motion.h2>
           <motion.p
             variants={fadeUp}
             custom={2}
-            className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-text-secondary"
+            className="mx-auto mt-4 max-w-md text-[16px] leading-[1.5] text-body-muted"
           >
-            Got questions? We have the answers. If you can not find what you
-            are looking for, feel free to reach out.
+            Punya pertanyaan? Kami punya jawabannya. Jika Anda tidak menemukan yang dicari, jangan ragu untuk menghubungi kami.
           </motion.p>
         </motion.div>
 
-        {/* Accordion */}
         <motion.div
-          className="rounded-2xl border border-border-subtle/70 bg-white/[0.015] p-2 backdrop-blur-sm"
+          className="border-t border-hairline"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           variants={stagger}
         >
-          <div className="divide-y-0 px-4">
-            {FAQ_ITEMS.map((item, index) => (
-              <FAQItem
-                key={index}
-                item={item}
-                index={index}
-                isOpen={openIndex === index}
-                onToggle={() => toggle(index)}
-              />
-            ))}
-          </div>
+          {FAQ_ITEMS.map((item, index) => (
+            <FAQItem
+              key={index}
+              item={item}
+              index={index}
+              isOpen={openIndex === index}
+              onToggle={() => toggle(index)}
+            />
+          ))}
         </motion.div>
       </div>
     </section>
   )
 }
 
-/* ──────────────────────── Footer ──────────────────────── */
-
 function Footer() {
   return (
-    <footer className="border-t border-border-subtle/50">
-      {/* Main footer area */}
-      <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-12">
-          {/* Brand */}
-          <div className="lg:col-span-5">
-            <a href="/" className="group inline-flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-white/[0.06] ring-1 ring-white/[0.08] transition-all duration-200 group-hover:bg-white/[0.1] group-hover:ring-white/[0.14]">
+    <footer className="bg-primary">
+      <div className="mx-auto max-w-5xl px-4 py-16">
+        <div className="grid gap-12 [grid-template-columns:repeat(auto-fit,minmax(160px,1fr))]">
+          <div>
+            <Link to="/" className="group inline-flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg">
                 <img src="/logo.png" alt="NaoFlix Logo" className="h-full w-full object-cover" />
               </div>
-              <span className="text-[15px] font-semibold tracking-tight text-text-primary">
+              <span className="font-display text-[15px] font-semibold tracking-tight text-white">
                 NaoFlix
               </span>
-            </a>
-            <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-text-muted">
-              Your all-in-one entertainment platform. Stream movies, watch anime, and read comics —
-              all for free, with no ads, in high definition.
+            </Link>
+            <p className="mt-4 max-w-xs text-[14px] leading-[1.4] text-white/50">
+              Platform hiburan all-in-one Anda. Streaming film, tonton anime, dan baca komik — semuanya gratis, tanpa iklan, dalam kualitas HD.
             </p>
 
-            {/* Social icons */}
             <div className="mt-6 flex items-center gap-2">
               <a
                 href="https://instagram.com/for_evershya10"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="footer-instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-text-muted transition-all duration-200 hover:bg-white/[0.06] hover:text-text-primary"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-white/40 transition-all duration-200 hover:bg-white/10 hover:text-white"
                 aria-label="Instagram"
               >
                 <Instagram className="h-[18px] w-[18px]" />
@@ -541,8 +542,7 @@ function Footer() {
                 href="https://github.com/Naotica2"
                 target="_blank"
                 rel="noopener noreferrer"
-                id="footer-github"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-text-muted transition-all duration-200 hover:bg-white/[0.06] hover:text-text-primary"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-white/40 transition-all duration-200 hover:bg-white/10 hover:text-white"
                 aria-label="GitHub"
               >
                 <Github className="h-[18px] w-[18px]" />
@@ -550,10 +550,9 @@ function Footer() {
             </div>
           </div>
 
-          {/* Link columns */}
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
-            <div key={category} className="lg:col-span-2">
-              <h4 className="mb-4 text-[12px] font-semibold uppercase tracking-widest text-text-muted">
+            <div key={category}>
+              <h4 className="mb-4 text-[12px] font-semibold uppercase tracking-widest text-white/40">
                 {category}
               </h4>
               <ul className="space-y-3">
@@ -563,11 +562,11 @@ function Footer() {
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="inline-flex items-center gap-1 text-[13px] text-text-secondary transition-colors duration-200 hover:text-text-primary"
+                      className="inline-flex items-center gap-1 text-[14px] text-white/60 transition-colors duration-200 hover:text-white"
                     >
                       {link.label}
                       {link.external && (
-                        <ArrowUpRight className="h-3 w-3 text-text-muted" />
+                        <ArrowUpRight className="h-3 w-3 text-white/30" />
                       )}
                     </a>
                   </li>
@@ -578,19 +577,18 @@ function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-border-subtle/40">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
-          <p className="text-[12px] text-text-muted">
-            &copy; {new Date().getFullYear()} NaoFlix. All rights reserved.
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-4 px-4 py-6">
+          <p className="text-[12px] text-white/40">
+            &copy; {new Date().getFullYear()} NaoFlix. Hak cipta dilindungi.
           </p>
-          <p className="text-[12px] text-text-muted">
-            Made by{' '}
+          <p className="text-[12px] text-white/40">
+            Dibuat oleh{' '}
             <a
               href="https://github.com/Naotica2"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary transition-colors duration-200 hover:text-text-primary"
+              className="text-white/60 transition-colors duration-200 hover:text-white"
             >
               Naotica
             </a>
@@ -601,15 +599,14 @@ function Footer() {
   )
 }
 
-/* ──────────────────────── Home ──────────────────────── */
-
 function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-surface">
+    <div className="flex min-h-screen flex-col bg-canvas">
+      <AnnouncementBar />
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <WhyNaoFlix />
+        <Features />
         <FAQ />
       </main>
       <Footer />
@@ -617,13 +614,12 @@ function Home() {
   )
 }
 
-/* ──────────────────────── App ──────────────────────── */
-
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/releases" element={<Releases />} />
+      <Route path="/donasi" element={<Donation />} />
     </Routes>
   )
 }
