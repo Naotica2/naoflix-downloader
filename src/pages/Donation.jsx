@@ -228,7 +228,7 @@ export default function Donation() {
 
             <motion.div variants={fadeUp} custom={4} className="mt-8">
               <a
-                href="https://saweria.co/"
+                href="https://saweria.co/naotica"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 rounded-[32px] bg-white px-6 py-3 text-[14px] font-medium text-deep-green transition-all duration-200 hover:bg-white/90 active:scale-[0.98]"
