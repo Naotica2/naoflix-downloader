@@ -300,7 +300,7 @@ function Hero() {
         >
           <div className="flex flex-col items-center">
             <a
-              href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
+              href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.1.apk"
               download="naoflix.apk"
               className="group inline-flex items-center justify-center gap-2.5 rounded-[32px] bg-primary px-6 py-3 text-[14px] font-medium text-white transition-all duration-200 hover:bg-cohere-black active:scale-[0.98]"
             >

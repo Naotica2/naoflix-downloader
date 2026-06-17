@@ -154,5 +154,21 @@
       "Fixed Pagination Optimization mencegah infinity bug di menu Terbaru.",
       "Fixed Account Page Safe Area profil agar tidak mentok ke status bar."
     ]
+  },
+                  {
+    "version": "2.0.1",
+    "date": "2026-06-17",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.1.apk",
+    "changelog": [
+      "Added Film/Series: Nonton film dengan streaming MP4 native, subtitle multi-bahasa, dan pencarian.",
+      "Added Film Player: Pemutar native dengan switcher resolusi, subtitle picker, dan fullscreen.",
+      "Added Film Terbaru: Section trending film di Home dengan grid layout dan pagination.",
+      "Added Film EXP: Nonton film/series memberikan +25 EXP per tonton.",
+      "Added Chat Forum: Forum chat real-time dengan floating button, badge unread, dan anti-spam.",
+      "Added Shinigami Comic: Ekstensi komik baru dengan rilis terbaru, pencarian, dan reader.",
+      "Added Komikcast Comic: Ekstensi komik Manga, Manhwa, Manhua terlengkap.",
+      "Fixed Jadwal Mingguan: Kini menampilkan semua hari (Senin-Minggu) dengan benar.",
+      "Fixed Level Reset: Progress level dan EXP tidak lagi reset saat logout, tersinkronisasi ke Supabase."
+    ]
   }
 ]
