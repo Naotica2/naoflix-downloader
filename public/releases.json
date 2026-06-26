@@ -170,5 +170,26 @@
       "Fixed Jadwal Mingguan: Kini menampilkan semua hari (Senin-Minggu) dengan benar.",
       "Fixed Level Reset: Progress level dan EXP tidak lagi reset saat logout, tersinkronisasi ke Supabase."
     ]
+  },
+                  {
+    "version": "2.0.2",
+    "date": "2026-06-26",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.2.apk",
+    "changelog": [
+      "Changed Rounded Episode Navigation: Desain navigasi pindah episode kini memiliki gaya membulat.",
+      "Changed Continue Watching: Difilter khusus Anime & Film, dilengkapi info sisa durasi terakhir.",
+      "Changed Draggable Chat Forum: Tombol floating Forum Chat kini bisa digeser bebas di layar.",
+      "Added Fullscreen Episode Navigation: Tombol Next/Prev langsung di pemutar fullscreen untuk Anime & Film Series.",
+      "Fixed Shinigami Genre Navigation: Halaman 'Lihat Lebih Banyak' saat pencarian berdasarkan genre kini berfungsi.",
+      "Fixed Film History Playback: Pemutar Film kini bisa rewatch via halaman Histori & Tonton Nanti.",
+      "Fixed Account Data Persistence: Progress level & EXP tidak lagi reset saat pengguna clear data aplikasi.",
+      "Fixed TV Series Metadata Bug: Serial TV tidak lagi terdeteksi sebagai Movie di Tonton Nanti & Histori.",
+      "Fixed Accurate History Tags: Tag label histori kini menampilkan 'TV Series' dengan warna oranye secara tepat.",
+      "Fixed Animelovers Latest Episodes: Tombol 'Lihat Semua' pada Episode Terbaru kini mendukung pagination.",
+      "Fixed Fullscreen Crash: Bug fatal yang menyebabkan app crash saat masuk fullscreen kini teratasi.",
+      "Fixed Komikcast Image Loading: Halaman komik Komikcast yang kosong kini berhasil dimuat.",
+      "Fixed Animelovers Genre Filtering: Menu 'Lihat Lebih Banyak' kini menampilkan hasil yang relevan.",
+      "Removed Oploverz: Ekstensi anime Oploverz dihapus permanen karena server tidak stabil."
+    ]
   }
 ]

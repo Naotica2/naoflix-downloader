@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Releases from './pages/Releases'
+import releasesData from '../public/releases.json'
+
+const latestRelease = releasesData[releasesData.length - 1]
+const LATEST_APK_URL = latestRelease.downloadUrl
+const LATEST_VERSION = latestRelease.version
 import Donation from './pages/Donation'
 import {
   Download,
@@ -155,7 +160,7 @@ function AnnouncementBar() {
   return (
     <div className="relative z-[60] flex h-9 w-full items-center justify-center bg-cohere-black px-10">
       <p className="text-[12px] leading-tight text-white">
-        NaoFlix v2.0.0 sudah tersedia!{' '}
+        NaoFlix v2.0.2 sudah tersedia!{' '}
         <a href="#hero" className="underline underline-offset-2 transition-opacity hover:opacity-80">
           Unduh sekarang
         </a>
@@ -205,7 +210,7 @@ function Navbar() {
             Riwayat
           </Link>
           <a
-            href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
+            href={LATEST_APK_URL}
             download="naoflix.apk"
             className="inline-flex items-center gap-1.5 rounded-[32px] bg-primary px-5 py-2.5 text-[14px] font-medium text-white transition-all duration-200 hover:bg-cohere-black active:scale-[0.98]"
           >
@@ -238,7 +243,7 @@ function Navbar() {
               <Link to="/donasi" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">Donasi</Link>
               <Link to="/releases" onClick={() => setMobileOpen(false)} className="rounded-lg px-3 py-2.5 text-[14px] font-medium text-ink transition-colors hover:bg-soft-stone">Riwayat</Link>
               <a
-                href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.0.apk"
+                href={LATEST_APK_URL}
                 download="naoflix.apk"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-[32px] bg-primary px-5 py-3 text-[14px] font-medium text-white"
@@ -300,14 +305,14 @@ function Hero() {
         >
           <div className="flex flex-col items-center">
             <a
-              href="https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.0.1.apk"
+              href={LATEST_APK_URL}
               download="naoflix.apk"
               className="group inline-flex items-center justify-center gap-2.5 rounded-[32px] bg-primary px-6 py-3 text-[14px] font-medium text-white transition-all duration-200 hover:bg-cohere-black active:scale-[0.98]"
             >
               <Download className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
               Unduh APK
             </a>
-            <span className="mt-2 text-[12px] font-medium text-muted">Mendapatkan versi terbaru</span>
+            <span className="mt-2 text-[12px] font-medium text-muted">v{LATEST_VERSION} — Versi Terbaru</span>
           </div>
 
           <Link
