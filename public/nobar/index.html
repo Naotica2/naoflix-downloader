@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bergabung ke Nobar NaoFlix</title>
+    <style>
+        body { 
+            background-color: #0f0f0f; color: white; font-family: sans-serif; 
+            display: flex; flex-direction: column; align-items: center; 
+            justify-content: center; height: 100vh; margin: 0; text-align: center;
+        }
+        .btn { 
+            background-color: #6366f1; color: white; padding: 14px 28px; 
+            text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <h2>🚀 Mengalihkan ke NaoFlix...</h2>
+    <p>Mohon tunggu, kamu sedang dibawa masuk ke dalam Room Nobar.</p>
+    <p style="color: #888; font-size: 14px;">Jika aplikasi tidak otomatis terbuka, klik tombol di bawah:</p>
+    <a id="openBtn" href="naoflix://" class="btn">Buka Aplikasi NaoFlix</a>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('room');
+        
+        let appLink = "naoflix://";
+        if (roomId) {
+            appLink = "naoflix://nobar?room=" + roomId;
+        }
+
+        document.getElementById("openBtn").href = appLink;
+        window.location.href = appLink;
+
+        setTimeout(() => {
+            if (document.visibilityState !== "hidden") {
+                window.location.href = "https://naoflix.app";
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,13 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Releases from './pages/Releases'
-import releasesData from '../public/releases.json'
-
-const latestRelease = releasesData[releasesData.length - 1]
-const LATEST_APK_URL = latestRelease.downloadUrl
-const LATEST_VERSION = latestRelease.version
 import Donation from './pages/Donation'
+
+
 import {
   Download,
   ShieldOff,
@@ -20,6 +17,19 @@ import {
   X,
   Menu,
 } from 'lucide-react'
+
+function useLatestRelease() {
+  const [release, setRelease] = useState({ downloadUrl: '#', version: '...' })
+  useEffect(() => {
+    fetch('/releases.json')
+      .then(r => r.json())
+      .then(d => {
+        if (d && d.length > 0) setRelease(d[d.length - 1])
+      })
+      .catch(console.error)
+  }, [])
+  return release
+}
 
 
 function Instagram({ className }) {
@@ -178,6 +188,7 @@ function AnnouncementBar() {
 
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { downloadUrl: LATEST_APK_URL } = useLatestRelease()
 
   return (
     <motion.nav
@@ -260,6 +271,7 @@ function Navbar() {
 }
 
 function Hero() {
+  const { downloadUrl: LATEST_APK_URL, version: LATEST_VERSION } = useLatestRelease()
   return (
     <section
       className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-4 py-20"
