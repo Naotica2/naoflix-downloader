@@ -191,5 +191,28 @@
       "Fixed Animelovers Genre Filtering: Menu 'Lihat Lebih Banyak' kini menampilkan hasil yang relevan.",
       "Removed Oploverz: Ekstensi anime Oploverz dihapus permanen karena server tidak stabil."
     ]
+  },
+                    {
+    "version": "2.1.0",
+    "date": "2026-07-20",
+    "downloadUrl": "https://gnsnwcipctlgehcwiukq.supabase.co/storage/v1/object/public/naoflix/naoflix%20v2.1.0.apk",
+    "changelog": [
+      "Added Direct Messaging (DM): Fitur Private Chat antar pengguna dengan sistem Preview-Before-Accept.",
+      "Added Rich Presence: Status aktivitas real-time di profil untuk melihat tontonan pengguna lain.",
+      "Added Chat Markdown & Link: Obrolan DM & Forum kini mendukung teks tebal, miring, dan deteksi link.",
+      "Added Watch Party (Nobar): Nonton bareng jarak jauh dengan live chat, sinkronisasi otomatis, dan undangan DM.",
+      "Added Watch Party Lag Tolerance: Toleransi disconnect 15 detik agar tidak langsung terlempar dari room.",
+      "Added Watch Party Auto-Pause Sync: Video otomatis Pause saat Host ganti episode agar Guest tidak tertinggal.",
+      "Added Anilist Cover Fallback: Pencarian poster anime alternatif jika sumber gambar terblokir (403 Forbidden).",
+      "Added GIF Avatar & Banner: Dukungan gambar GIF animasi untuk mengekspresikan profil pengguna.",
+      "Changed Profile Revamp: Tampilan Profil dirombak lebih modern untuk navigasi fitur sosial.",
+      "Changed Settings Overhaul: Navigasi menu Pengaturan dirapikan menjadi lebih intuitif.",
+      "Changed Smart Image Loading: Optimalisasi sistem gambar untuk menembus proteksi Cloudflare/Anti-Hotlink.",
+      "Changed AI Assistant Persona: Penyesuaian persona AI Assistant NaoFlix.",
+      "Changed Dynamic Title Propagation: Akurasi pencarian sistem Fallback gambar ditingkatkan.",
+      "Fixed Animelovers: Memperbaiki error pada sumber anime Animelovers.",
+      "Fixed WatchHistoryGrid Crash: Memperbaiki bug ReferenceError yang membuat aplikasi crash pada Riwayat Tontonan.",
+      "Fixed TV Series Episode Loading: Daftar season dan episode film series kini termuat instan dengan benar."
+    ]
   }
 ]
